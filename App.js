@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import socketIOClient from "socket.io-client";
+import Wrapper from "./src/Wrapper";
+import Loading from "./src/Loading";
 
 const port = 4001;
 const endpointBase = "http://adamglang.com";
@@ -52,8 +54,8 @@ export default class App extends React.Component {
       <View style={styles.container}>
         {
           responses
-          ? <Text>Here is some live data: {JSON.stringify(responses)}</Text>
-          : <Text>Loading...</Text>
+          ? <Wrapper responses={responses}/>
+          : <Loading />
         }
       </View>
     );
