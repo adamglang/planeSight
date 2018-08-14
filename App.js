@@ -1,8 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, ScrollView, View } from "react-native";
 import socketIOClient from "socket.io-client";
+import Header from "./src/Header";
+import Footer from "./src/Footer";
 import Wrapper from "./src/Wrapper";
 import Loading from "./src/Loading";
+import styles from "./src/stylesheets/AppStyles";
 
 const port = 4001;
 const endpointBase = "http://adamglang.com";
@@ -26,21 +29,21 @@ export default class App extends React.Component {
 
       this.connectSockets(this.state.sensors);
     } catch(e) {
-      console.error(`One of the remote calls failed: ${e.stack}`);
+      console.error(`Something broke with: ${e}`);
     }
   }
 
-  connectSockets = (sensors) => {
+  connectSockets = sensors => {
     const responses = {};
 
-    for(const [idx, sensor] of sensors.entries()) {
+    sensors.forEach((sensor, idx) => {
       const socket = socketIOClient(`${endpointBase}:${port + idx}`);
 
       socket.on(`From::${sensor}`, data => {
         responses[sensor] = data;
         this.setState({responses});
       });
-    }
+    })
   };
 
   getSensors = async () => {
@@ -54,22 +57,14 @@ export default class App extends React.Component {
       <View style={styles.container}>
         {
           responses
-          ? <Wrapper responses={responses}/>
+          ? <ScrollView style={{flex: 1}}>
+              <Header />
+                <Wrapper responses={responses}/>
+              <Footer/>
+            </ScrollView>
           : <Loading />
         }
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    fontSize: 20
-  }
-});
