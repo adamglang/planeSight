@@ -1,9 +1,10 @@
 {
   "expo": {
     "sdkVersion": "27.0.0",
-    "splash": {
-      "image": "./assets/splash.png",
-      "backgroundColor": "#000"
+    "name": "PlaneSite",
+    "description": "On board in flight diagnostic application which can take sensor data from websockets, display any issues in real time, and create a button to send a preset message to a technician",
+    "android": {
+      "package": "com.adamglang.planesite"
     }
   }
 }

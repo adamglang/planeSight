@@ -47,6 +47,7 @@ export default StyleSheet.create({
   },
   message: {
     fontSize: 15,
-    color: "#FFF"
+    color: "#FFF",
+    marginBottom: 20
   }
 });

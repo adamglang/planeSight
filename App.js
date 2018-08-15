@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, ScrollView, View } from "react-native";
 import socketIOClient from "socket.io-client";
+
 import Header from "./src/Header";
 import Footer from "./src/Footer";
 import Wrapper from "./src/Wrapper";
@@ -11,19 +12,21 @@ const port = 4001;
 const endpointBase = "http://adamglang.com";
 
 export default class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       "sensors": null,
       "responses": null
     };
+
+    this.connectSockets = this.connectSockets.bind(this);
   }
 
   async componentDidMount() {
     try {
       if(!this.state.sensors) {
-        const retrievedSensors = await this.getSensors();
+        const retrievedSensors = await App.getSensors();
         this.setState({"sensors": retrievedSensors})
       }
 
@@ -33,7 +36,7 @@ export default class App extends React.Component {
     }
   }
 
-  connectSockets = sensors => {
+  connectSockets(sensors) {
     const responses = {};
 
     sensors.forEach((sensor, idx) => {
@@ -46,7 +49,7 @@ export default class App extends React.Component {
     })
   };
 
-  getSensors = async () => {
+  static async getSensors() {
       const sensorsPromise = await fetch("http://www.adamglang.com:4000");
       return await sensorsPromise.json();
   };
@@ -59,7 +62,7 @@ export default class App extends React.Component {
           responses
           ? <ScrollView style={{flex: 1}}>
               <Header />
-                <Wrapper responses={responses}/>
+                <Wrapper responses={responses} />
               <Footer/>
             </ScrollView>
           : <Loading />

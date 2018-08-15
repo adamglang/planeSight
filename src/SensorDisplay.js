@@ -10,7 +10,10 @@ export default SensorDisplay = ({
   deviceName,
   goodMessage,
   warningMessage,
-  dangerMessage
+  dangerMessage,
+  techPhoneNumber,
+  warningMessageForTech,
+  dangerMessageForTech,
 }) => {
   let template;
 
@@ -19,22 +22,26 @@ export default SensorDisplay = ({
       deviceName,
       dangerMessage,
       convention,
-      current}}
-    />
+      current,
+      techPhoneNumber,
+      dangerMessageForTech
+    }} />
   } else if(current <= threshold.warning && current > threshold.danger) {
     template = <WarningTemplate {...{
       deviceName,
       warningMessage,
       convention,
-      current}}
-    />
+      current,
+      techPhoneNumber,
+      warningMessageForTech,
+    }} />
   } else {
     template = <GoodTemplate {...{
       deviceName,
       goodMessage,
       convention,
       current
-    }}/>
+    }} />
   }
 
   return template;

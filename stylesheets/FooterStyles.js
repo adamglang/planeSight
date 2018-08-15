@@ -2,9 +2,18 @@ import {StyleSheet} from "react-native";
 
 export default StyleSheet.create({
   container: {
-
+    flex: 1,
     backgroundColor: "#000",
-    alignSelf: "stretch",
-    height: 300
+    height: 200,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  text: {
+    color: "#FFF",
+    fontSize: 20,
+    textAlign: "center"
+  },
+  image: {
+    resizeMode: "contain"
   }
 });
