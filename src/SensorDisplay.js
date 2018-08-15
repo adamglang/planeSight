@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import GoodTemplate from "./GoodTemplate";
 import WarningTemplate from "./WarningTemplate";
 import DangerTemplate from "./DangerTemplate";

@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
-import styles from "./stylesheets/WarningTemplateStyles";
+import styles from "../stylesheets/WarningTemplateStyles";
 
 export default WarningTemplate = ({
   deviceName,

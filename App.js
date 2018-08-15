@@ -5,7 +5,7 @@ import Header from "./src/Header";
 import Footer from "./src/Footer";
 import Wrapper from "./src/Wrapper";
 import Loading from "./src/Loading";
-import styles from "./src/stylesheets/AppStyles";
+import styles from "./stylesheets/AppStyles";
 
 const port = 4001;
 const endpointBase = "http://adamglang.com";

@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
-import styles from "./stylesheets/DangerTemplateStyles";
+import styles from "../stylesheets/DangerTemplateStyles";
 
 export default DangerTemplate = ({
   deviceName,

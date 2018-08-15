@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, FlatList } from "react-native";
 import SensorDisplay from  "./SensorDisplay";
-import styles from "./stylesheets/WrapperStyles"
+import styles from "../stylesheets/WrapperStyles"
 
 export default Wrapper = ({responses}) => (
   <View style={styles.container}>
